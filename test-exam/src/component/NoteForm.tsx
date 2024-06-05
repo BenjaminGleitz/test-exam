@@ -50,15 +50,15 @@ const NoteForm: React.FC<NoteFormProps> = ({ editingNote, onFinishEditing }) => 
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="title">Title</label>
-                <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <input name={'title'} id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="score">Score</label>
-                <input id="score" value={score} onChange={(e) => setScore(e.target.value)} />
+                <input name={'score'} id="score" value={score} onChange={(e) => setScore(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="comment">Comment</label>
-                <textarea id="comment" value={comment} onChange={(e) => setComment(e.target.value)} />
+                <textarea name={'comment'} id="comment" value={comment} onChange={(e) => setComment(e.target.value)} />
             </div>
             <button type="submit">{editingNote ? 'Update' : 'Submit'}</button>
         </form>

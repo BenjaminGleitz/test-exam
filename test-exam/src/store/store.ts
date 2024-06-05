@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { Note } from '../type/Note';
 
 interface NoteState {

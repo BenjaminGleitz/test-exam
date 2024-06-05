@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useNoteStore from '../store/store';
 import { Note } from '../type/Note';
 import NoteForm from './NoteForm';
-import Modal from "./Modal.tsx";
+import Modal from './Modal';
 
 const NoteList: React.FC = () => {
     const notes = useNoteStore((state) => state.notes);
@@ -15,9 +15,8 @@ const NoteList: React.FC = () => {
     };
 
     const handleDelete = (id: number) => {
-        if (confirm('Are you sure you want to delete this note?')) {
             deleteNote(id);
-        }
+            setViewingNote(null); // Close the modal after deletion
     };
 
     const handleView = (note: Note) => {
@@ -25,7 +24,7 @@ const NoteList: React.FC = () => {
     };
 
     return (
-        <div className={'note-listing'}>
+        <div>
             {editingNote && (
                 <NoteForm
                     editingNote={editingNote}
@@ -44,6 +43,7 @@ const NoteList: React.FC = () => {
                     <h2>{viewingNote.title}</h2>
                     <p>{viewingNote.date}</p>
                     <p>{viewingNote.comment}</p>
+                    <p>{viewingNote.score}</p> {/* Ajoutez ce score pour le rendre visible dans le test */}
                     <button onClick={() => handleEdit(viewingNote)}>Edit</button>
                     <button onClick={() => handleDelete(viewingNote.id)}>Delete</button>
                 </Modal>
